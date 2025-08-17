@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <!-- ======= META ======= -->
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Galería</title>
+
+  <!-- Fuente Montserrat -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet" />
+
+  <!-- Favicon (tu logo chico) -->
+  <link rel="icon" type="image/png" href="img/logo.png" />
+
+  <!-- Estilos compartidos -->
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <!-- ======= HEADER SIN BOTÓN DE ADMIN ======= -->
+  <header class="site-header">
+    <!-- Logo grande del boliche (linkea a la propia galería pública) -->
+    <a class="brand" href="./galeria-cliente.html" aria-label="Galería">
+      <img src="img/logograndeblanco.png" alt="Logo del boliche" class="brand-logo" />
+    </a>
+    <!-- 💡 No hay <nav> ni botones de administración -->
+  </header>
+
+  <!-- ======= CONTENIDO ======= -->
+  <main class="container">
+    <section>
+      <h1 class="title-xl">Galería</h1>
+      <p class="text-muted">Elegí el álbum que quieras ver. Se abrirá en Google Photos.</p>
+    </section>
+
+    <!-- Grilla que completa el JS -->
+    <section id="galleryGrid" class="grid"></section>
+
+    <!-- Mensaje de vacío/error -->
+    <p id="emptyMsg" class="empty text-muted" hidden>La galería aún no tiene álbumes.</p>
+  </main>
+
+  <!-- ======= SCRIPTS ======= -->
+  <!-- Reutilizamos el mismo galeria.js que ya tenés configurado con tu API_URL -->
+  <script src="galeria.js" defer></script>
+</body>
+</html>

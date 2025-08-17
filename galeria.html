@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <!-- =================== META BÁSICO =================== -->
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Galería de Álbumes</title>
+
+  <!-- Fuente Montserrat -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet" />
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="img/logo.png" />
+
+  <!-- Hoja de estilos -->
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <!-- =================== HEADER CON LOGO =================== -->
+  <header class="site-header">
+    <!-- Logo grande → home/galería -->
+    <a class="brand" href="./galeria.html" aria-label="Inicio galería">
+      <img src="img/logograndeblanco.png" alt="Logo del boliche" class="brand-logo" />
+    </a>
+
+    <!-- Navegación -->
+    <nav class="site-nav">
+      <a class="btn btn-ghost" href="./index.html">Ingresar nuevo</a>
+    </nav>
+  </header>
+
+  <!-- =================== CONTENIDO PRINCIPAL =================== -->
+  <main class="container">
+    <section>
+      <h1 class="title-xl">Galería</h1>
+      <p class="text-muted">Elegí el álbum que quieras ver. Se abrirá en Google Photos.</p>
+    </section>
+
+    <!-- Grilla donde el JS va a dibujar las tarjetas -->
+    <section id="galleryGrid" class="grid"></section>
+
+    <!-- Mensaje cuando no hay álbumes o falla la carga -->
+    <p id="emptyMsg" class="empty text-muted" hidden>La galería aún no tiene álbumes.</p>
+  </main>
+
+  <!-- =================== SCRIPTS =================== -->
+  <!-- La lógica de carga (JSONP para evitar CORS) estará en galeria.js -->
+  <script src="galeria.js" defer></script>
+</body>
+</html>

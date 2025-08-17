@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <!-- =================== META BÁSICO =================== -->
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Nuevo Álbum</title>
+
+  <!-- Fuente Montserrat (pedido) -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet" />
+
+  <!-- Favicon (usa tu img/logo.png) -->
+  <link rel="icon" type="image/png" href="img/logo.png" />
+
+  <!-- Hoja de estilos (la vas a crear luego) -->
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <!-- =================== HEADER CON LOGO =================== -->
+  <header class="site-header">
+    <!-- Logo grande del boliche -->
+    <a class="brand" href="./galeria.html" aria-label="Ir a la galería">
+      <img src="img/logograndeblanco.png" alt="Logo del boliche" class="brand-logo" />
+    </a>
+
+    <!-- Navegación simple -->
+    <nav class="site-nav">
+      <a class="btn btn-ghost" href="./galeria.html">Ver galería</a>
+    </nav>
+  </header>
+
+  <!-- =================== CONTENIDO PRINCIPAL =================== -->
+  <main class="container">
+    <!-- Tarjeta/box para ingresar el álbum -->
+    <section class="card">
+      <h1 class="title-xl">Ingresar nuevo álbum</h1>
+      <p class="text-muted">
+        Pegá el link público de Google Photos y tocá <strong>Agregar</strong>.
+      </p>
+
+      <!-- ===== Campo único: URL del álbum ===== -->
+      <!-- NOTA: el <input> tiene id para que el JS lo encuentre fácil -->
+      <label for="albumUrl" class="label">URL de Google Photos *</label>
+      <input
+        id="albumUrl"
+        class="input"
+        type="url"
+        placeholder="https://photos.google.com/share/..."
+        required
+        autocomplete="off"
+      />
+
+      <!-- ===== Botones de acción ===== -->
+      <div class="actions">
+        <!-- Botón principal: lo toma el JS por ID -->
+        <button id="addBtn" class="btn btn-primary">Agregar</button>
+
+        <!-- Botón secundario: ir a la galería -->
+        <a class="btn btn-ghost" href="./galeria.html">Ver galería</a>
+      </div>
+
+      <!-- Mensajes de estado (éxito / error) -->
+      <div id="msg" class="msg" aria-live="polite"></div>
+
+      <!-- ====== BLOQUE "PLAN B" (fallback sin CORS) ======
+           Este form + iframe lo usa el JS si el fetch tuviera problemas CORS.
+           NO toques nada: queda oculto y el JS lo dispara solo.
+      -->
+      <form id="fallbackForm" method="POST" target="hiddenFrame" class="hidden">
+        <!-- El JS completará el action con la URL de tu Web App -->
+        <input type="hidden" name="url" id="f_url" />
+      </form>
+      <iframe name="hiddenFrame" id="hiddenFrame" class="hidden" title="hidden transport"></iframe>
+      <!-- ====== FIN BLOQUE FALLBACK ====== -->
+    </section>
+  </main>
+
+  <!-- =================== SCRIPTS =================== -->
+  <!-- Configuración + lógica la pondremos en index.js (que harás después) -->
+  <script src="index.js" defer></script>
+</body>
+</html>

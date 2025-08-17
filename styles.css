@@ -1,0 +1,170 @@
+/* ============================================================
+   styles.css
+   Estilos base y responsive para ambas páginas.
+   ZONAS FÁCILES DE EDITAR:
+     - Paleta de colores (variables)
+     - Anchos máximos
+   ============================================================ */
+
+/* -------- Paleta y básicos -------- */
+:root{
+  /* Colores base (cambiá si querés otro look) */
+  --bg:#0f0f10;         /* fondo general */
+  --fg:#f1f1f1;         /* texto principal */
+  --muted:#9aa0a6;      /* texto secundario */
+  --brand:#ffd800;      /* color de marca/botón */
+  --card:#18181b;       /* tarjetas y bloques */
+  --border:#2a2a2f;     /* bordes suaves */
+
+  /* Anchos máximos para el contenido */
+  --max:1100px;
+}
+
+/* Reset corto para que todo mida "parejo" */
+*{ box-sizing:border-box; }
+
+html, body{
+  margin:0;
+  padding:0;
+  background:var(--bg);
+  color:var(--fg);
+  font-family:Montserrat, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, sans-serif;
+  line-height:1.4;
+}
+
+/* -------- Utilidades simples -------- */
+.hidden{ display:none !important; }
+.text-muted{ color:var(--muted); }
+.title-xl{ font-weight:900; font-size:clamp(1.4rem, 2.5vw, 2rem); margin:0 0 8px; }
+
+/* -------- Layout general -------- */
+.container{
+  width:100%;
+  max-width:var(--max);
+  margin:0 auto;
+  padding: clamp(16px, 3vw, 24px);
+}
+
+/* -------- Header con logo y nav -------- */
+.site-header{
+  width:100%;
+  border-bottom:1px solid var(--border);
+  background:rgba(24,24,27,0.6);
+  backdrop-filter: blur(6px);
+  position:sticky; top:0; z-index:10;
+}
+
+.site-header .container,
+.site-header{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  padding:12px clamp(12px, 3vw, 24px);
+}
+
+.brand{ display:inline-flex; align-items:center; gap:10px; text-decoration:none; }
+.brand-logo{
+  height: clamp(36px, 6vw, 56px); /* logo grande responsivo */
+  width:auto;
+}
+
+/* Navegación simple (links/botones a la derecha) */
+.site-nav{ display:flex; align-items:center; gap:10px; }
+
+/* -------- Tarjetas / cajas -------- */
+.card{
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:18px;
+  padding: clamp(16px, 2.5vw, 22px);
+  box-shadow:0 8px 24px rgba(0,0,0,.25);
+}
+
+/* -------- Inputs y labels -------- */
+.label{ display:block; margin:10px 0 6px; font-size:.95rem; }
+.input{
+  width:100%;
+  padding:12px 14px;
+  border-radius:12px;
+  border:1px solid var(--border);
+  background:#111114;
+  color:var(--fg);
+  outline:none;
+  transition:border-color .15s ease;
+}
+.input:focus{ border-color:var(--brand); }
+
+/* -------- Botones -------- */
+.btn{
+  display:inline-block;
+  text-align:center;
+  padding:12px 14px;
+  border-radius:12px;
+  font-weight:900;
+  text-decoration:none;
+  cursor:pointer;
+  user-select:none;
+}
+.btn-primary{ background:var(--brand); color:#000; border:none; }
+.btn-ghost{ background:transparent; color:var(--fg); border:1px solid var(--border); }
+.btn[disabled]{ opacity:.6; cursor:not-allowed; }
+
+/* Grupo de botones/acciones */
+.actions{ display:flex; flex-wrap:wrap; gap:10px; margin-top:12px; }
+
+/* Mensajes de estado */
+.msg{ margin-top:10px; font-size:.95rem; }
+.msg.ok{ color:#50fa7b; }
+.msg.err{ color:#ff6b6b; }
+
+/* -------- Grilla de la galería -------- */
+.grid{
+  display:grid;
+  /* auto-fill hace que se acomoden solos por fila */
+  grid-template-columns: repeat(auto-fill, minmax(220px,1fr));
+  gap:16px;
+  margin-top:16px;
+}
+
+/* Tarjeta de álbum */
+.card-album{
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:16px;
+  overflow:hidden;
+  transition: transform .12s ease;
+}
+.card-album:hover{ transform: translateY(-2px); }
+
+.card-album a{ color:inherit; text-decoration:none; display:block; }
+
+.thumb{
+  /* Mantener relación 16:9 sin imagen */
+  aspect-ratio:16/9;
+  background:#0b0b0d;
+  display:grid;
+  place-items:center;
+  color:var(--muted);
+  font-size:.9rem;
+}
+.thumb img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+}
+
+.meta{ padding:12px; }
+.meta .title{ margin:0 0 4px; font-weight:900; font-size:1rem; }
+.meta .date{ margin:0; font-size:.9rem; color:var(--muted); }
+
+/* -------- Responsive finos -------- */
+@media (max-width: 640px){
+  .site-header{
+    position:static; /* en móviles, más simple */
+  }
+  .site-nav{ gap:8px; }
+  .brand-logo{ height:44px; }
+  .grid{ grid-template-columns: repeat(auto-fill, minmax(170px,1fr)); }
+}
